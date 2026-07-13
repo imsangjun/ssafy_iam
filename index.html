@@ -11,8 +11,12 @@
             --bg-color: #000000;
         }
         body { font-family: 'Paperlogy', sans-serif; background-color: var(--bg-color); }
-        .card { background-color: #ffffff; border-radius: 20px; }
+        .card { background-color: #ffffff; border-radius: 20px; transition: all 0.3s ease; }
         
+        /* STREAMING_CHUNK:Configuring visual effects... */
+        .hover-invert { transition: filter 0.3s ease; cursor: pointer; }
+        .hover-invert:hover { filter: invert(1); }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-10px); }
@@ -39,79 +43,98 @@
 
         <!-- Sidebar Left -->
         <aside class="col-span-12 md:col-span-3 card p-8 flex flex-col justify-between">
+            <!-- STREAMING_CHUNK:Rendering navigation... -->
             <div>
                 <h2 class="text-4xl font-bold leading-tight mb-6">My<br>FaVorIte<br>Mus!cs</h2>
                 <p class="text-sm text-gray-500 font-light leading-relaxed">
                     다양한 음악을 좋아합니다. 깊이는 얕디 얕습니다.
                 </p>
             </div>
-            <div class="flex gap-4 mt-12 text-gray-400">
-                <span>♡</span> <span>RSS</span> <span>TW</span>
+            
+            <div class="flex gap-3 mt-12">
+                <div class="w-8 h-8 rounded-full border-2 border-orange-500 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-orange-500 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="w-8 h-8 rounded-full border-2 border-gray-800 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-gray-800 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </div>
+                <div class="w-8 h-8 rounded-full border-2 border-gray-800 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-gray-800 fill-current" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>
+                </div>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main id="main-content" class="col-span-12 md:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-2">
-            <!-- Specification Section -->
-            <div class="card p-8 min-h-[400px] flex flex-col justify-center">
-                <div class="text-xs font-bold text-gray-400 mb-6 tracking-widest uppercase">Main Hobbies</div>
-                <div class="text-sm font-light leading-loose space-y-2">
-                    <p>Photography</p>
-                    <p>Coffee Brewing</p>
-                    <p>Reading</p>
-                    <p>Coding</p>
+            <!-- Please share your taste Section -->
+            <div class="card p-8 min-h-[400px] flex flex-col justify-start">
+                <h2 class="text-4xl font-bold leading-tight mb-8">Please<br>share your<br>taste</h2>
+                <div class="text-sm font-light leading-relaxed text-gray-600 space-y-4">
+                    <p>좋은 노래 있으면 공유 부탁드립니다.</p>
+                    <a href="https://app.notion.com/p/Members-2533cb37136a8241a6ff016eb797fab3?p=e413cb37136a83e387810169ccf54986&pm=s" target="_blank" class="inline-block px-6 py-2 border border-black rounded-full text-black hover:bg-black hover:text-white transition">Notion 바로가기</a>
                 </div>
             </div>
             <!-- Silicagel Section -->
-            <div class="card overflow-hidden relative flex flex-col justify-center">
+            <div id="silicagel-section" class="card hover-invert overflow-hidden relative flex flex-col justify-center">
                 <img src="silicagel_01.jpg" alt="Silicagel" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Silicagel';">
             </div>
         </main>
 
         <!-- Sidebar Right -->
         <div id="sidebar-right" class="col-span-12 md:col-span-3 flex flex-col gap-2">
-            <!-- Stay Connected (Filled with Image) -->
-            <div id="stay-connected" class="card relative overflow-hidden h-[180px] flex items-center justify-center">
+            <!-- Stay Connected -->
+            <div id="stay-connected" class="card hover-invert relative overflow-hidden h-[180px] flex items-center justify-center">
                 <img src="thepoles.jpg" alt="the poles" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
                     <h3 class="text-white font-bold text-2xl tracking-widest">the poles</h3>
                 </div>
             </div>
             <!-- SIKK Section -->
-            <div id="sikk" class="card relative overflow-hidden h-[180px]">
+            <div id="sikk" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
                 <img src="fd3447dafa28143af029edb3c54e132a.jpg" alt="SIKK" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image';">
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <h3 class="text-white font-bold text-3xl tracking-widest">KC</h3>
                 </div>
             </div>
             <!-- YE Section -->
-            <div id="ye" class="card relative overflow-hidden h-[180px]">
+            <div id="ye" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
                 <img src="ye.jpg" alt="YE" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=YE';">
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <h3 class="text-white font-bold text-3xl tracking-widest">YE</h3>
                 </div>
             </div>
+            <!-- Aphex Section -->
+            <div id="aphex" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
+                <img src="aphex.jpg" alt="Aphex" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Aphex';">
+            </div>
         </div>
 
     </div>
 
+    <!-- STREAMING_CHUNK:Initializing animation controls... -->
     <script>
         function triggerAnimation(type) {
+            const silicagel = document.getElementById('silicagel-section');
             const sikk = document.getElementById('sikk');
             const ye = document.getElementById('ye');
             const stayConnected = document.getElementById('stay-connected');
+            const aphex = document.getElementById('aphex');
 
             // Reset animation
-            [sikk, ye, stayConnected].forEach(el => el.classList.remove('shake'));
+            [silicagel, sikk, ye, stayConnected, aphex].forEach(el => el.classList.remove('shake'));
+            
+            // Trigger reflow
             void sikk.offsetWidth; 
 
             if (type === 'band') {
                 stayConnected.classList.add('shake');
-                sikk.classList.add('shake');
+                silicagel.classList.add('shake');
             } else if (type === 'hiphop') {
+                sikk.classList.add('shake');
                 ye.classList.add('shake');
             }
         }
     </script>
 </body>
 </html>
+```eof
