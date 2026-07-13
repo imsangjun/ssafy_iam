@@ -13,9 +13,17 @@
         body { font-family: 'Paperlogy', sans-serif; background-color: var(--bg-color); }
         .card { background-color: #ffffff; border-radius: 20px; transition: all 0.3s ease; }
         
-        /* STREAMING_CHUNK:Configuring visual effects... */
+        /* STREAMING_CHUNK:Configuring interactions... */
         .hover-invert { transition: filter 0.3s ease; cursor: pointer; }
         .hover-invert:hover { filter: invert(1); }
+
+        /* Silicagel hover effect: Duotone (Blue/Yellow) */
+        .silicagel-card { transition: all 0.3s ease; cursor: pointer; position: relative; }
+        .silicagel-card:hover { background-color: #2430C5 !important; }
+        .silicagel-card:hover img { 
+            filter: sepia(1) hue-rotate(180deg) saturate(5);
+            transition: filter 0.3s ease;
+        }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -43,7 +51,6 @@
 
         <!-- Sidebar Left -->
         <aside class="col-span-12 md:col-span-3 card p-8 flex flex-col justify-between">
-            <!-- STREAMING_CHUNK:Rendering navigation... -->
             <div>
                 <h2 class="text-4xl font-bold leading-tight mb-6">My<br>FaVorIte<br>Mus!cs</h2>
                 <p class="text-sm text-gray-500 font-light leading-relaxed">
@@ -66,7 +73,6 @@
 
         <!-- Main Content -->
         <main id="main-content" class="col-span-12 md:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-2">
-            <!-- Please share your taste Section -->
             <div class="card p-8 min-h-[400px] flex flex-col justify-start">
                 <h2 class="text-4xl font-bold leading-tight mb-8">Please<br>share your<br>taste</h2>
                 <div class="text-sm font-light leading-relaxed text-gray-600 space-y-4">
@@ -74,44 +80,43 @@
                     <a href="https://app.notion.com/p/Members-2533cb37136a8241a6ff016eb797fab3?p=e413cb37136a83e387810169ccf54986&pm=s" target="_blank" class="inline-block px-6 py-2 border border-black rounded-full text-black hover:bg-black hover:text-white transition">Notion 바로가기</a>
                 </div>
             </div>
-            <!-- Silicagel Section -->
-            <div id="silicagel-section" class="card hover-invert overflow-hidden relative flex flex-col justify-center">
-                <img src="silicagel_01.jpg" alt="Silicagel" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Silicagel';">
-            </div>
+            <!-- Silicagel -->
+            <a id="silicagel-section" href="https://www.youtube.com/watch?v=2lVLJCK4Tbo" target="_blank" class="card silicagel-card overflow-hidden relative flex flex-col justify-center">
+                <img src="silicagel_01.jpg" alt="Silicagel" class="w-full h-full object-cover transition-all duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Silicagel';">
+            </a>
         </main>
 
         <!-- Sidebar Right -->
         <div id="sidebar-right" class="col-span-12 md:col-span-3 flex flex-col gap-2">
-            <!-- Stay Connected -->
-            <div id="stay-connected" class="card hover-invert relative overflow-hidden h-[180px] flex items-center justify-center">
+            <!-- the poles -->
+            <a id="stay-connected" href="https://www.youtube.com/watch?v=7jAX0eU1nio" target="_blank" class="card hover-invert relative overflow-hidden h-[180px] flex items-center justify-center">
                 <img src="thepoles.jpg" alt="the poles" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
                     <h3 class="text-white font-bold text-2xl tracking-widest">the poles</h3>
                 </div>
-            </div>
-            <!-- SIKK Section -->
-            <div id="sikk" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
+            </a>
+            <!-- SIKK -->
+            <a id="sikk" href="https://www.youtube.com/watch?v=llLEB-1plzA&t=164s" target="_blank" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
                 <img src="fd3447dafa28143af029edb3c54e132a.jpg" alt="SIKK" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image';">
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <h3 class="text-white font-bold text-3xl tracking-widest">KC</h3>
                 </div>
-            </div>
-            <!-- YE Section -->
-            <div id="ye" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
+            </a>
+            <!-- YE -->
+            <a id="ye" href="https://www.youtube.com/watch?v=IC8Wevt2WX8" target="_blank" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
                 <img src="ye.jpg" alt="YE" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=YE';">
                 <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
                     <h3 class="text-white font-bold text-3xl tracking-widest">YE</h3>
                 </div>
-            </div>
-            <!-- Aphex Section -->
-            <div id="aphex" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
+            </a>
+            <!-- Aphex -->
+            <a id="aphex" href="https://www.youtube.com/watch?v=Xw5AiRVqfqk&t=1112s" target="_blank" class="card hover-invert overflow-hidden h-[180px] flex items-center justify-center relative">
                 <img src="aphex.jpg" alt="Aphex" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Aphex';">
-            </div>
+            </a>
         </div>
 
     </div>
 
-    <!-- STREAMING_CHUNK:Initializing animation controls... -->
     <script>
         function triggerAnimation(type) {
             const silicagel = document.getElementById('silicagel-section');
@@ -120,10 +125,7 @@
             const stayConnected = document.getElementById('stay-connected');
             const aphex = document.getElementById('aphex');
 
-            // Reset animation
             [silicagel, sikk, ye, stayConnected, aphex].forEach(el => el.classList.remove('shake'));
-            
-            // Trigger reflow
             void sikk.offsetWidth; 
 
             if (type === 'band') {
