@@ -20,15 +20,9 @@
             transition: transform 0.8s cubic-bezier(0.77, 0, 0.18, 1);
         }
 
+        /* STREAMING_CHUNK:Configuring interactions and effects... */
         .hover-invert { transition: filter 0.3s ease; cursor: pointer; }
         .hover-invert:hover { filter: invert(1); }
-
-        .silicagel-card { transition: all 0.3s ease; cursor: pointer; position: relative; }
-        .silicagel-card:hover { background-color: #2430C5 !important; }
-        .silicagel-card:hover img { 
-            filter: sepia(1) hue-rotate(180deg) saturate(5);
-            transition: filter 0.3s ease;
-        }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -89,7 +83,7 @@
                 </div>
             </div>
             <!-- Silicagel -->
-            <a id="silicagel-section" href="https://www.youtube.com/watch?v=2lVLJCK4Tbo" target="_blank" class="nav-link card silicagel-card overflow-hidden relative flex flex-col justify-center">
+            <a id="silicagel-section" href="https://www.youtube.com/watch?v=2lVLJCK4Tbo" target="_blank" class="nav-link card hover-invert overflow-hidden relative flex flex-col justify-center">
                 <img src="silicagel_01.jpg" alt="Silicagel" class="w-full h-full object-cover transition-all duration-300" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Silicagel';">
             </a>
         </main>
@@ -122,6 +116,7 @@
     </div>
 
     <script>
+        // STREAMING_CHUNK:Initializing navigation and animation controls...
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -129,7 +124,6 @@
                 const id = this.id;
                 const overlay = document.getElementById('transition-overlay');
                 
-                // Set Origin based on clicked element
                 if (id === 'silicagel-section') {
                     overlay.style.transformOrigin = 'left';
                     overlay.style.transform = 'scaleX(1)';
@@ -143,7 +137,6 @@
                     overlay.style.transformOrigin = 'bottom';
                     overlay.style.transform = 'scaleY(1)';
                 } else {
-                    // Default behavior for other links like Notion
                     overlay.style.transformOrigin = 'center';
                     overlay.style.transform = 'scale(1)';
                 }
