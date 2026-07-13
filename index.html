@@ -16,10 +16,6 @@
         .card { background-color: var(--card-bg); border-radius: 20px; }
         .border-gray { border: 1px solid var(--border-color); }
         
-        .page { transition: opacity 0.3s ease-in-out; }
-        .hidden { display: none; opacity: 0; }
-
-        /* 애니메이션 효과 */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-10px); }
@@ -28,9 +24,9 @@
         .shake { animation: shake 0.4s ease-in-out; }
     </style>
 </head>
-<body class="p-4 md:p-8 min-h-screen text-black">
+<body class="p-4 md:p-6 min-h-screen text-black">
 
-    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-4">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-2">
         
         <!-- Header -->
         <header class="col-span-12 card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -39,15 +35,15 @@
                 <h1 class="text-5xl font-black tracking-tighter">Im Sangjun</h1>
             </div>
             <div class="flex items-center gap-3">
-                <button onclick="showPage('band-page')" class="px-6 py-2 border border-black rounded-full font-light text-sm hover:bg-black hover:text-white transition">Band</button>
-                <button onclick="showPage('hiphop-page')" class="px-6 py-2 border border-black rounded-full font-light text-sm hover:bg-black hover:text-white transition">Hip-hop</button>
+                <button onclick="triggerAnimation('band')" class="px-6 py-2 border border-black rounded-full font-light text-sm hover:bg-black hover:text-white transition">Band</button>
+                <button onclick="triggerAnimation('hiphop')" class="px-6 py-2 border border-black rounded-full font-light text-sm hover:bg-black hover:text-white transition">Hip-hop</button>
             </div>
         </header>
 
         <!-- Sidebar Left -->
         <aside class="col-span-12 md:col-span-3 card p-8 flex flex-col justify-between">
             <div>
-                <h2 onclick="showPage('home-page')" class="text-4xl font-bold leading-tight mb-6 cursor-pointer hover:text-gray-600 transition">My<br>Favorite<br>Things</h2>
+                <h2 class="text-4xl font-bold leading-tight mb-6">My<br>Favorite<br>Things</h2>
                 <p class="text-sm text-gray-500 font-light leading-relaxed">
                     음악을 사랑하고 다양한 취미를 즐기며 일상 속 작은 영감을 수집합니다.
                 </p>
@@ -57,66 +53,41 @@
             </div>
         </aside>
 
-        <!-- Main Content (SPA Area) - 카드 형태를 개별 섹션으로 분리 -->
-        <main id="main-content" class="col-span-12 md:col-span-6 min-h-[400px]">
-            
-            <!-- Home Page -->
-            <section id="home-page" class="page grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-8 border-gray">
-                    <div class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase">Main Hobbies</div>
-                    <div class="text-sm font-light leading-loose">Photography<br>Coffee Brewing<br>Reading<br>Coding</div>
+        <!-- Main Content -->
+        <main id="main-content" class="col-span-12 md:col-span-6 card p-8 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Specification Section -->
+            <div class="p-4 border-r border-gray-100 flex flex-col justify-center">
+                <div class="text-xs font-bold text-gray-400 mb-6 tracking-widest uppercase">Main Hobbies</div>
+                <div class="text-sm font-light leading-loose space-y-2">
+                    <p>Photography</p>
+                    <p>Coffee Brewing</p>
+                    <p>Reading</p>
+                    <p>Coding</p>
                 </div>
-                <div class="card p-8 border-gray">
-                    <div class="text-xs font-bold text-gray-400 mb-4 tracking-widest uppercase">Music Taste</div>
-                    <div class="text-sm font-light leading-loose">Indie Pop<br>Alt Rock<br>City Pop</div>
-                </div>
-            </section>
-
-            <!-- Band Page -->
-            <section id="band-page" class="page hidden grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-8 border-gray">
-                    <h2 class="text-xl font-black mb-4">Band Music</h2>
-                    <p class="font-light text-sm text-gray-600">에너지가 느껴지는 사운드</p>
-                    <ul class="mt-4 space-y-2 font-light text-sm"><li>• 혁오 (Hyukoh)</li></ul>
-                </div>
-                <div class="card p-8 border-gray">
-                    <h2 class="text-xl font-black mb-4">Band Vibe</h2>
-                    <p class="font-light text-sm text-gray-600">잔잔한 멜로디</p>
-                    <ul class="mt-4 space-y-2 font-light text-sm"><li>• 검정치마</li></ul>
-                </div>
-            </section>
-
-            <!-- Hip-hop Page -->
-            <section id="hiphop-page" class="page hidden grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-8 border-gray">
-                    <h2 class="text-xl font-black mb-4">Hip-hop Artist</h2>
-                    <p class="font-light text-sm text-gray-600">스토리텔링 위주</p>
-                    <ul class="mt-4 space-y-2 font-light text-sm"><li>• 빈지노</li></ul>
-                </div>
-                <div class="card p-8 border-gray">
-                    <h2 class="text-xl font-black mb-4">Hip-hop Vibe</h2>
-                    <p class="font-light text-sm text-gray-600">비트 중심</p>
-                    <ul class="mt-4 space-y-2 font-light text-sm"><li>• 이센스</li></ul>
-                </div>
-            </section>
+            </div>
+            <!-- Silicagel Section -->
+            <div class="p-4 border-gray border flex flex-col justify-center relative overflow-hidden bg-cover bg-center rounded-2xl">
+                <img src="silicagel_01.jpg" alt="Silicagel" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Silicagel';">
+                <div class="absolute bottom-4 left-4 text-white font-bold bg-black/50 px-3 py-1 rounded-full text-xs">Silicagel</div>
+            </div>
         </main>
 
         <!-- Sidebar Right -->
-        <div id="sidebar-right" class="col-span-12 md:col-span-3 flex flex-col gap-4">
+        <div id="sidebar-right" class="col-span-12 md:col-span-3 flex flex-col gap-2">
             <div id="stay-connected" class="card p-6 bg-gray-50 border-gray">
                 <h3 class="font-bold">Stay Connected</h3>
                 <p class="text-xs text-gray-500 font-light mt-1">작업물 공유 및 소통 환영합니다.</p>
             </div>
-            <div id="photo1" class="card p-6 bg-gray-100 border-gray h-48 flex items-center justify-center text-gray-400 text-sm">
+            <div id="photo1" class="card p-6 bg-gray-100 border-gray h-[178px] flex items-center justify-center text-gray-400 text-sm">
                 Photo 1
             </div>
-            <div id="photo2" class="card p-6 bg-gray-100 border-gray h-48 flex items-center justify-center text-gray-400 text-sm">
+            <div id="photo2" class="card p-6 bg-gray-100 border-gray h-[178px] flex items-center justify-center text-gray-400 text-sm">
                 Photo 2
             </div>
         </div>
 
-        <!-- 하단 추가 섹션 -->
-        <section class="col-span-12 card p-8 mt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Lower Section -->
+        <section class="col-span-12 card p-8 mt-2 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="border-b md:border-b-0 md:border-r border-gray pb-4 md:pb-0">
                 <h4 class="font-bold mb-2">Latest Update</h4>
                 <p class="text-sm font-light text-gray-500">새로운 필름 카메라를 장만했습니다.</p>
@@ -134,22 +105,19 @@
     </div>
 
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) targetPage.classList.remove('hidden');
-
+        function triggerAnimation(type) {
             const photo1 = document.getElementById('photo1');
             const photo2 = document.getElementById('photo2');
             const stayConnected = document.getElementById('stay-connected');
 
+            // Reset animation
             [photo1, photo2, stayConnected].forEach(el => el.classList.remove('shake'));
             void photo1.offsetWidth; 
 
-            if (pageId === 'band-page') {
+            if (type === 'band') {
                 stayConnected.classList.add('shake');
                 photo1.classList.add('shake');
-            } else if (pageId === 'hiphop-page') {
+            } else if (type === 'hiphop') {
                 photo2.classList.add('shake');
             }
         }
