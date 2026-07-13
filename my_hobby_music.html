@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies & Music</title>
+    <style>
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('./Paperlogy-4Regular.ttf') format('truetype');
+            font-weight: normal;
+        }
+
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('./Paperlogy-7Bold.ttf') format('truetype');
+            font-weight: bold;
+        }
+
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('./Paperlogy-9Black.ttf') format('truetype');
+            font-weight: 900;
+        }
+
+        :root {
+            --bg-color: #000000;
+            --card-bg: #ffffff;
+            --card-bg-orange: #ff5722;
+            --card-bg-yellow: #fcd595;
+            --card-border-radius: 12px;
+            --accent-color: #ff5722;
+            --text-dark: #000000;
+            --text-light: #666666;
+            --font-family: 'Paperlogy', 'Helvetica Neue', Arial, sans-serif;
+            --gap-size: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.4;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            /* Adjust height based on available viewport, with a reasonable minimum */
+            height: calc(100vh - 40px);
+            min-height: 700px;
+            display: grid;
+            grid-template-columns: 20% 1fr 20%;
+            grid-template-rows: auto auto 1fr;
+            gap: var(--gap-size);
+            padding: var(--gap-size);
+            background-color: var(--bg-color);
+        }
+
+        /* Base Card Styling */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--card-border-radius);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* 1. Top Header (Superdry Style) */
+        .header {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 24px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-symbol {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-left: 10px;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 6px 20px;
+            border: 2px solid var(--text-dark);
+            border-radius: 20px;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: var(--font-family);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn .count {
+            background-color: var(--card-bg-yellow);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            border: 1px solid var(--text-dark);
+        }
+
+        .icon-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--text-dark);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 2. Secondary Nav Bar */
+        .sub-nav {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .size-selector {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .size-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--text-dark);
+            background: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-family: var(--font-family);
+        }
+
+        .size-btn.active {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .price-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .add-to-bag {
+            padding: 8px 24px;
+            border: 2px solid var(--text-dark);
+            border-radius: 20px;
+            background: none;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-family: var(--font-family);
+        }
+
+        /* 3. Left Sidebar */
+        .sidebar-left {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .breadcrumb {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            word-spacing: 2px;
+        }
+
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .brand-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: auto;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-icons .icon-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #eee;
+            color: var(--text-dark);
+        }
+
+        /* 4. Main Content (Yellow Box) */
+        .main-content {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+            background-color: var(--card-bg-yellow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-container {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            flex-grow: 1;
+        }
+
+        .spec-title {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        .spec-details {
+            display: flex;
+            gap: 40px;
+            font-size: 0.75rem;
+        }
+
+        .spec-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .care-icons {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .care-icons span {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--text-dark);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.6rem;
+        }
+
+        .delivery-container {
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .delivery-title {
+            font-size: 1.2rem;
+        }
+
+        .delivery-desc {
+            font-size: 1.1rem;
+            max-width: 40%;
+            text-align: right;
+            line-height: 1.2;
+        }
+
+        /* 5. Right Sidebar (Bento Boxes) */
+        .sidebar-right {
+            grid-column: 3 / 4;
+            grid-row: 2 / 4;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1.5fr;
+            gap: var(--gap-size);
+            background: none;
+        }
+
+        .sub-card {
+            background-color: var(--card-bg);
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sub-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .box-1 { grid-column: 1 / 2; grid-row: 1 / 2; }
+        .box-2 { 
+            grid-column: 2 / 3; 
+            grid-row: 1 / 3; 
+            background-color: var(--card-bg-orange); 
+            padding: 15px;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        .box-3 { grid-column: 1 / 2; grid-row: 2 / 3; }
+        .box-4 { 
+            grid-column: 1 / 2; 
+            grid-row: 3 / 4; 
+            background: none; 
+            justify-content: center;
+        }
+        .box-4 .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg-yellow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+        .box-5 { grid-column: 2 / 3; grid-row: 3 / 4; }
+        .box-6 { 
+            grid-column: 1 / 3; 
+            grid-row: 4 / 5;
+            padding: 15px;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 25% 1fr;
+                height: auto;
+            }
+            .sidebar-right {
+                grid-column: 1 / -1;
+                grid-row: 4 / 5;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: 150px 150px;
+            }
+            .box-1 { grid-column: 1/2; grid-row: 1/2; }
+            .box-2 { grid-column: 2/3; grid-row: 1/2; }
+            .box-3 { grid-column: 3/4; grid-row: 1/2; }
+            .box-4 { grid-column: 4/5; grid-row: 1/2; }
+            .box-5 { grid-column: 1/3; grid-row: 2/3; }
+            .box-6 { grid-column: 3/5; grid-row: 2/3; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- 1. Header -->
+        <header class="card header">
+            <div class="logo-area">
+                <div class="logo-sub">
+                    <span>MY HOBBY</span>
+                    <span>& MUSIC</span>
+                </div>
+                <div class="logo-text">Profile</div>
+                <div class="logo-symbol">®</div>
+            </div>
+            <div class="header-nav">
+                <button class="nav-btn">HOBBIES <span class="count">3 Items</span></button>
+                <button class="nav-btn">MUSIC <span class="count">12 Items</span></button>
+                <span>$ 240.00 -></span>
+                <button class="icon-btn">🛒</button>
+                <button class="icon-btn">♡</button>
+                <button class="icon-btn">≡</button>
+            </div>
+        </header>
+
+        <!-- 2. Left Sidebar -->
+        <aside class="card sidebar-left">
+            <div>
+                <div class="breadcrumb">
+                    HOME - HOBBY - MUSIC -<br>
+                    LIFESTYLE - FAVORITE
+                </div>
+                <h1 class="brand-title">
+                    My<br>
+                    Favorite<br>
+                    Things<br>
+                    List
+                </h1>
+                <p class="brand-desc">
+                    음악을 사랑하고 다양한 취미를 즐기며 일상 속 작은 영감을 수집합니다. 저의 관심사들을 이곳에 모아두었습니다. 언제든 편하게 둘러보세요.
+                </p>
+            </div>
+            
+            <div class="social-icons">
+                <button class="icon-btn" style="background: none; border: 1px solid var(--text-dark); color: var(--text-dark);">♡</button>
+                <button class="icon-btn" style="background-color: #ff9800; border: none;">B</button>
+                <button class="icon-btn" style="background-color: #1da1f2; border: none;">T</button>
+                <button class="icon-btn" style="background-color: #3b5998; border: none;">f</button>
+            </div>
+        </aside>
+
+        <!-- 3. Secondary Nav -->
+        <div class="card sub-nav">
+            <div class="size-selector">
+                <button class="size-btn">H1</button>
+                <button class="size-btn">H2</button>
+                <button class="size-btn active">M1</button>
+                <button class="size-btn">M2</button>
+                <button class="size-btn">Etc</button>
+            </div>
+            <div class="price-area">
+                <span class="price">€ 34.99</span>
+                <button class="add-to-bag">ADD TO LIST <span style="color: white; background: var(--accent-color); border-radius: 50%; width: 20px; height: 20px; display: inline-flex; justify-content: center; align-items: center; font-size: 14px;">+</span></button>
+            </div>
+        </div>
+
+        <!-- 4. Main Content (Yellow) -->
+        <main class="card main-content">
+            <div class="spec-container">
+                <div class="spec-title">SPECIFICATION</div>
+                
+                <div class="spec-details">
+                    <div class="spec-column">
+                        <strong>MAIN HOBBIES</strong>
+                        <br>
+                        Photography<br>
+                        Coffee Brewing<br>
+                        Reading<br>
+                        Coding
+                    </div>
+                    <div class="spec-column">
+                        <strong>MUSIC TASTE</strong>
+                        <br>
+                        GENRE<br>
+                        Indie Pop, Alt Rock, Lo-Fi
+                    </div>
+                    <div class="spec-column">
+                        <strong>PLAYLIST & VIBE</strong>
+                        <br>
+                        <div class="care-icons">
+                            <span>🎧</span>
+                            <span>🎸</span>
+                            <span>🎹</span>
+                            <span>☕</span>
+                            <span>📸</span>
+                        </div>
+                        FAV ARTIST: Daft Punk, Oasis<br>
+                        INSTRUMENT: Acoustic Guitar<br>
+                        MOOD: Chill, Relaxing, Focus<br>
+                        TIME: Late Night, Weekend Morning
+                    </div>
+                </div>
+            </div>
+
+            <div class="delivery-container">
+                <div class="delivery-title">LATEST UPDATE</div>
+                <div class="price">€14.00</div>
+                <div class="delivery-desc">
+                    새로운 필름 카메라를 장만했습니다.<br>이번 주말에는 출사를 나갈 예정이에요.
+                </div>
+            </div>
+        </main>
+
+        <!-- 5. Right Sidebar (Bento) -->
+        <aside class="sidebar-right">
+            <div class="sub-card box-1">
+                <img src="https://placehold.co/200x200/eeeeee/999999?text=Photo+1" alt="Image 1">
+            </div>
+            
+            <div class="sub-card box-2">
+                <h3 style="font-size: 1rem; margin-bottom: 20px;">STAY<br>CONNECTED</h3>
+                <button class="icon-btn" style="background:var(--text-dark); color:white; margin-bottom: 20px;">✉</button>
+                <p style="font-size: 0.6rem; line-height: 1.2;">GET BEHIND THE SCENES ACCESS TO NEW HOBBIES, MUSIC RECOMMENDATIONS AND MORE.</p>
+            </div>
+            
+            <div class="sub-card box-3">
+                 <img src="https://placehold.co/200x200/dddddd/666666?text=Photo+2" alt="Image 2">
+            </div>
+            
+            <div class="sub-card box-4">
+                <div class="circle">VIBE</div>
+            </div>
+            
+            <div class="sub-card box-5">
+                 <img src="https://placehold.co/200x200/cccccc/333333?text=Photo+3" alt="Image 3">
+            </div>
+
+            <div class="sub-card box-6">
+                <img src="https://placehold.co/400x200/f0f0f0/999999?text=Now+Playing" alt="Now Playing" style="height: 60%;">
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding-top: 10px;">
+                    <div>
+                        <div style="font-size: 0.7rem; font-weight: bold;">NOW PLAYING</div>
+                        <div style="font-size: 0.6rem;">Hype Boy - NewJeans</div>
+                    </div>
+                    <div style="font-size: 0.6rem; text-align: right;">
+                        <del>WAS €54.99</del><br>
+                        <strong>NOW €38.49</strong>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 사이즈(카테고리) 버튼 클릭 이벤트
+            const sizeBtns = document.querySelectorAll('.size-btn');
+            sizeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    sizeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
