@@ -40,14 +40,14 @@
     <div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-2">
         
         <!-- Header -->
-        <header class="col-span-12 card p-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <header class="col-span-12 bg-[#2430C5] text-[#FFFF00] p-6 rounded-[20px] flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex flex-col">
-                <span class="text-[0.7rem] font-light tracking-widest text-gray-400">My FaVorIte Mus!cs</span>
+                <span class="text-[0.7rem] font-light tracking-widest opacity-80">My FaVorIte Mus!cs</span>
                 <h1 class="text-5xl font-black tracking-tighter">Im Sangjun</h1>
             </div>
             <div class="flex items-center gap-3">
-                <button onclick="triggerAnimation('band')" class="px-6 py-2 border border-black rounded-full font-light text-sm hover:bg-black hover:text-white transition">Band</button>
-                <button onclick="triggerAnimation('hiphop')" class="px-6 py-2 border border-black rounded-full font-light text-sm hover:bg-black hover:text-white transition">Hip-hop</button>
+                <button onclick="triggerAnimation('band')" class="px-6 py-2 border border-[#FFFF00] rounded-full font-light text-sm hover:bg-[#FFFF00] hover:text-[#2430C5] transition">Band</button>
+                <button onclick="triggerAnimation('hiphop')" class="px-6 py-2 border border-[#FFFF00] rounded-full font-light text-sm hover:bg-[#FFFF00] hover:text-[#2430C5] transition">Hip-hop</button>
             </div>
         </header>
 
@@ -116,7 +116,6 @@
     </div>
 
     <script>
-        // STREAMING_CHUNK:Initializing navigation and animation controls...
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
