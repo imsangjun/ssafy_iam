@@ -9,12 +9,9 @@
         @import url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy.css');
         :root {
             --bg-color: #000000;
-            --card-bg: #ffffff;
-            --border-color: #e5e5e5;
         }
         body { font-family: 'Paperlogy', sans-serif; background-color: var(--bg-color); }
-        .card { background-color: var(--card-bg); border-radius: 20px; }
-        .border-gray { border: 1px solid var(--border-color); }
+        .card { background-color: #ffffff; border-radius: 20px; }
         
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -43,7 +40,7 @@
         <!-- Sidebar Left -->
         <aside class="col-span-12 md:col-span-3 card p-8 flex flex-col justify-between">
             <div>
-                <h2 class="text-4xl font-bold leading-tight mb-6">My<br>Favorite<br>Things</h2>
+                <h2 class="text-4xl font-bold leading-tight mb-6">My<br>FaVorIte<br>Mus!cs</h2>
                 <p class="text-sm text-gray-500 font-light leading-relaxed">
                     음악을 사랑하고 다양한 취미를 즐기며 일상 속 작은 영감을 수집합니다.
                 </p>
@@ -54,9 +51,9 @@
         </aside>
 
         <!-- Main Content -->
-        <main id="main-content" class="col-span-12 md:col-span-6 card p-8 min-h-[400px] grid grid-cols-1 md:grid-cols-2 gap-4">
+        <main id="main-content" class="col-span-12 md:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-2">
             <!-- Specification Section -->
-            <div class="p-4 border-r border-gray-100 flex flex-col justify-center">
+            <div class="card p-8 min-h-[400px] flex flex-col justify-center">
                 <div class="text-xs font-bold text-gray-400 mb-6 tracking-widest uppercase">Main Hobbies</div>
                 <div class="text-sm font-light leading-loose space-y-2">
                     <p>Photography</p>
@@ -66,59 +63,47 @@
                 </div>
             </div>
             <!-- Silicagel Section -->
-            <div class="p-4 border-gray border flex flex-col justify-center relative overflow-hidden bg-cover bg-center rounded-2xl">
+            <div class="card overflow-hidden relative flex flex-col justify-center">
                 <img src="silicagel_01.jpg" alt="Silicagel" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/ffffff?text=Silicagel';">
-                <div class="absolute bottom-4 left-4 text-white font-bold bg-black/50 px-3 py-1 rounded-full text-xs">Silicagel</div>
             </div>
         </main>
 
         <!-- Sidebar Right -->
         <div id="sidebar-right" class="col-span-12 md:col-span-3 flex flex-col gap-2">
-            <div id="stay-connected" class="card p-6 bg-gray-50 border-gray">
-                <h3 class="font-bold">Stay Connected</h3>
-                <p class="text-xs text-gray-500 font-light mt-1">작업물 공유 및 소통 환영합니다.</p>
+            <!-- Stay Connected (Filled with Image) -->
+            <div id="stay-connected" class="card relative overflow-hidden h-[178px] flex items-center justify-center">
+                <img src="thepoles.jpg" alt="the poles" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <h3 class="text-white font-bold text-2xl tracking-widest">the poles</h3>
+                </div>
             </div>
-            <div id="photo1" class="card p-6 bg-gray-100 border-gray h-[178px] flex items-center justify-center text-gray-400 text-sm">
-                Photo 1
+            <!-- SIKK Section -->
+            <div id="sikk" class="card relative overflow-hidden h-[178px]">
+                <img src="fd3447dafa28143af029edb3c54e132a.jpg" alt="SIKK" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Image';">
             </div>
-            <div id="photo2" class="card p-6 bg-gray-100 border-gray h-[178px] flex items-center justify-center text-gray-400 text-sm">
-                Photo 2
+            <!-- YE Section -->
+            <div id="ye" class="card relative overflow-hidden h-[178px]">
+                <img src="ye.jpg" alt="YE" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=YE';">
             </div>
         </div>
-
-        <!-- Lower Section -->
-        <section class="col-span-12 card p-8 mt-2 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="border-b md:border-b-0 md:border-r border-gray pb-4 md:pb-0">
-                <h4 class="font-bold mb-2">Latest Update</h4>
-                <p class="text-sm font-light text-gray-500">새로운 필름 카메라를 장만했습니다.</p>
-            </div>
-            <div class="border-b md:border-b-0 md:border-r border-gray pb-4 md:pb-0">
-                <h4 class="font-bold mb-2">Favorite Quote</h4>
-                <p class="text-sm font-light text-gray-500">"음악은 인생의 기록입니다."</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-2">Current Status</h4>
-                <p class="text-sm font-light text-gray-500">다음 프로젝트 아이디어 구상 중.</p>
-            </div>
-        </section>
 
     </div>
 
     <script>
         function triggerAnimation(type) {
-            const photo1 = document.getElementById('photo1');
-            const photo2 = document.getElementById('photo2');
+            const sikk = document.getElementById('sikk');
+            const ye = document.getElementById('ye');
             const stayConnected = document.getElementById('stay-connected');
 
             // Reset animation
-            [photo1, photo2, stayConnected].forEach(el => el.classList.remove('shake'));
-            void photo1.offsetWidth; 
+            [sikk, ye, stayConnected].forEach(el => el.classList.remove('shake'));
+            void sikk.offsetWidth; 
 
             if (type === 'band') {
                 stayConnected.classList.add('shake');
-                photo1.classList.add('shake');
+                sikk.classList.add('shake');
             } else if (type === 'hiphop') {
-                photo2.classList.add('shake');
+                ye.classList.add('shake');
             }
         }
     </script>
